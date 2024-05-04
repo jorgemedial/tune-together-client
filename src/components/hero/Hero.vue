@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue';
 import EventTicket from '@/components/eventticket/EventTicket.vue'
 import SearchBar from '@/components/searchbar/SearchBar.vue'
-import { Icon } from '@iconify/vue';
+
+
 </script>
 
 <template>
@@ -11,54 +11,43 @@ import { Icon } from '@iconify/vue';
             <article class="title">
             <h1>Populars events <span class="highlight">in Spain</span></h1>
             </article>
-            <SearchBar />
+            <SearchBar placeholder="Name of the event"/>
             <EventTicket />
         </div>
     </section>
 </template>
 
 <style scoped>
-.hero{
-    padding: 4rem 2rem;
+.hero {
+    padding: 6rem 0rem 0rem 6rem;
     color: white;
     display: flex;
+    justify-content: center;
+    height: 100vh;
 }
-.container{
-    width: 90%;
+
+.container {
+    width: 60%;
     max-width: 1200px;
-    height: 100%;
-    display:flex;
-    align-items: center;
+    display: flex;
+    align-items: flex-start;
     flex-direction: column;
-    padding: 20px 50px 0px 50px;
     gap: 2rem;
 }
 
-.title{
+.title {
     font-size: 3em;
     text-align: left;
+    width: 100%; 
 }
 
-.highlight{
+.highlight {
     color: #71FF80;
 }
 
-
 @media (max-width: 768px) {
-    .container {
-        padding: 15px; 
-        gap: 0.5rem;
-    }
-
     .title {
-        font-size: 1.5em;
-        padding: 0 10px; 
-        text-align: center;
-    }
-
-    .highlight {
-        font-size: 1em;
+        font-size: 2em;
     }
 }
-
 </style>

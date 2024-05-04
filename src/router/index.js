@@ -18,7 +18,12 @@ const router = createRouter({
       path: '/concerts',
       name: 'ConcertList',
       component: () => import('../views/tuneTogether/ConcertList.vue')
-    }
+    },
+    {
+      path: '/login',
+      name: 'LoginPage',
+      component: () => import('../views/loginPage/LoginPage.vue')
+    },
   ]
 })
 

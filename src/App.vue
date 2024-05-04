@@ -10,3 +10,9 @@ import SearchBar from '@/components/searchbar/SearchBar.vue'
         <Navigator />
         <Home />
 </template>
+
+<style scoped>
+html {
+  scroll-behavior: smooth;
+}
+</style>

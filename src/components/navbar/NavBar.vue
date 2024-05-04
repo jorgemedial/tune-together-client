@@ -2,11 +2,13 @@
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
 
+
 const isMenuOpen = ref(false);
 
 function toggleMenu() {
     isMenuOpen.value = !isMenuOpen.value;
 }
+
 </script>
 
 <template>
@@ -27,9 +29,11 @@ function toggleMenu() {
             <ol :class="{ 'show': isMenuOpen }">
                 <li><p>Explore Events</p></li>
                 <li><p>About Us</p></li>
-                <li><div class="button-login">
-                    <button type="button">Log In</button> 
-                </div></li>
+                <li>
+                    <div class="button-login">
+                    <button @click="currentView = 'login'">Log In</button> 
+                    </div>
+                </li>
             </ol>
         </nav>
     </header>

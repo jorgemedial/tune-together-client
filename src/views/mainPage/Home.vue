@@ -4,7 +4,7 @@ import Hero from '@/components/hero/Hero.vue'
 </script>
 
 <template>
-    <main>
+    <main class="home">
         <Hero />
     </main>
 </template>
