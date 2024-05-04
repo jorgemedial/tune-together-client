@@ -105,6 +105,7 @@ h1{
 }
 
 .link-style{
+    color:white;
     text-decoration: none;
 }
 
