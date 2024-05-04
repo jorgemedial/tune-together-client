@@ -1,7 +1,6 @@
 <script>
 import Navigator from '@/components/navbar/NavBar.vue'
-import EventTicket from '@/components/eventticket/EventTicket.vue'
-import SearchBar from '@/components/searchbar/SearchBar.vue'
+import Hero from '@/components/hero/Hero.vue'
 </script>
 
 <template>
@@ -9,9 +8,6 @@ import SearchBar from '@/components/searchbar/SearchBar.vue'
         <Navigator />
     </header>
     <body>
-        <EventTicket />
-        <SearchBar />
+        <Hero />
     </body>
 </template>
-
-<style scoped></style>

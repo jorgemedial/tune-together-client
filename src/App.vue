@@ -12,9 +12,3 @@ import SearchBar from '@/components/searchbar/SearchBar.vue'
         <Home />
     </div>
 </template>
-
-<style scoped>
-*{
-    background: black;
-}
-</style>
