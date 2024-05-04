@@ -1,7 +1,7 @@
 <script setup>
-import EventTicket from '@/components/eventticket/EventTicket.vue'
+import { ref } from 'vue';
 import SearchBar from '@/components/searchbar/SearchBar.vue'
-
+import EventTicket from '@/components/eventticket/EventTicket.vue'
 </script>
 
 <template>
