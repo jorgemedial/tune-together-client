@@ -7,8 +7,6 @@ import SearchBar from '@/components/searchbar/SearchBar.vue'
 </script>
 
 <template>
-    <div class="app">
         <Navigator />
         <Home />
-    </div>
 </template>

@@ -1,3 +1,14 @@
+<script setup>
+import { ref } from 'vue';
+import { Icon } from '@iconify/vue';
+
+const isMenuOpen = ref(false);
+
+function toggleMenu() {
+    isMenuOpen.value = !isMenuOpen.value;
+}
+</script>
+
 <template>
     <header>
         <nav>
@@ -10,13 +21,15 @@
                     <h1 class="highlight">Together</h1>
                 </div>
             </div>
-            <ol>
-                
+            <button @click="toggleMenu" class="menu-toggle">
+                <Icon icon="mdi:menu" class="iconify" />
+            </button>
+            <ol :class="{ 'show': isMenuOpen }">
                 <li><p>Explore Events</p></li>
                 <li><p>About Us</p></li>
                 <li><div class="button-login">
-                        <button type="button">Log In</button> 
-                    </div></li>
+                    <button type="button">Log In</button> 
+                </div></li>
             </ol>
         </nav>
     </header>
@@ -40,19 +53,25 @@ nav{
     justify-content: space-between;
     align-items: center;
     padding: 15px 50px;
+    transition: color 0.3s ease-in-out;
 }
 
 .logo{
     display: flex;
-
 }
 
 .title-nav{
-    display: flex;
-    flex-direction: column;
+    flex: 1;
+    min-width: none;
     font-size: 18px;
 }
-
+h1{
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+    transition: height 0.5s ease-out;
+}
 .normal {
     color: white;
 }
@@ -61,11 +80,26 @@ nav{
   color: #71FF80;
 }
 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: white;
+}
+.iconify {
+    width: 50px;
+    height: 50px;
+}
+
 ol{
     display: flex;
     align-items: center;
     list-style: none;
     gap: 2rem;
+    overflow: hidden;
+    transition: height 0.5s ease-out;
 }
 
 li{
@@ -74,18 +108,66 @@ li{
     justify-content: space-between;
     font-size: 15px;
 }
+ol li p{
+    cursor: pointer;
+}
+
+li p:hover{
+    color: #71FF80;
+    transition: all 0.5s ease;
+}
 
 .button-login button {
-    width:;
+    width:100%;
     background-color: #38D247;
     color: black;
     border: none;
     padding: 10px 30px;
     border-radius: 25px;
     font-size: 18px;
+    transition: background-color 0.2s, transform 0.1s;
+    cursor: pointer;
 }
 
 .button-login button:hover {
     background-color: #2da33b;
 }
+
+.button-login button:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    .title-nav {
+        font-size: 16px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    ol {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #121212;
+    }
+
+    ol.show{
+        display: flex;
+    }
+
+    li {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 </style>

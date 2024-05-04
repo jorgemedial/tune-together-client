@@ -1,13 +1,13 @@
-<script>
+<script setup>
 import Navigator from '@/components/navbar/NavBar.vue'
 import Hero from '@/components/hero/Hero.vue'
 </script>
 
 <template>
-    <header>
-        <Navigator />
-    </header>
-    <body>
+    <main>
         <Hero />
-    </body>
+    </main>
 </template>
+
+<style scoped>
+</style>
