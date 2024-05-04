@@ -29,15 +29,15 @@ function toggleMenu() {
             </button>
             <ol :class="{ 'show': isMenuOpen }">
                 <li>
-                    <RouterLink :to="{ name: 'EventTicket' }">
+                    <RouterLink class="link-style" :to="{ name: 'EventTicket' }">
                         <p>Explore Events</p>
                     </RouterLink>
                 </li>
                 <li>
-                    <RouterLink :to="{ name: 'LoginPage' }">
+                    <RouterLink class="link-style" :to="{ name: 'LoginPage' }">
                         <p>About Us</p>
                     </RouterLink>
-            </li>
+                </li>
                 <li>
                     <LoginButton routeName="LoginPage">Go to Login</LoginButton>
                 </li>
@@ -102,6 +102,10 @@ h1{
 .iconify {
     width: 50px;
     height: 50px;
+}
+
+.link-style{
+    text-decoration: none;
 }
 
 ol{
