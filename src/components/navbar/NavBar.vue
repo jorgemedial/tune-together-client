@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 import { Icon } from '@iconify/vue';
-
+import LoginButton from '@/commons/Buttons/LoginButton.vue'
 
 const isMenuOpen = ref(false);
 
@@ -27,12 +28,18 @@ function toggleMenu() {
                 <Icon icon="mdi:menu" class="iconify" />
             </button>
             <ol :class="{ 'show': isMenuOpen }">
-                <li><p>Explore Events</p></li>
-                <li><p>About Us</p></li>
                 <li>
-                    <div class="button-login">
-                    <button @click="currentView = 'login'">Log In</button> 
-                    </div>
+                    <RouterLink :to="{ name: 'EventTicket' }">
+                        <p>Explore Events</p>
+                    </RouterLink>
+                </li>
+                <li>
+                    <RouterLink :to="{ name: 'LoginPage' }">
+                        <p>About Us</p>
+                    </RouterLink>
+            </li>
+                <li>
+                    <LoginButton routeName="LoginPage">Go to Login</LoginButton>
                 </li>
             </ol>
         </nav>

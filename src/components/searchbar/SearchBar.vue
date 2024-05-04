@@ -59,29 +59,8 @@ function performSearch() {
     left: 8px;
 }
 
-.filter-icon {
-    right: 8px;
-}
-
 .search-bar input:focus {
     border-color: #aaffb3;
     box-shadow: 0 4px 6px rgba(0, 255, 130, 0.25);
 }
-
-.filters-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    padding: 10px;
-    display: none;
-}
-
-.input-container:hover .filters-menu {
-    display: block;
-}
-
 </style>

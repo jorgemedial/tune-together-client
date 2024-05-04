@@ -24,6 +24,11 @@ const router = createRouter({
       name: 'LoginPage',
       component: () => import('../views/loginPage/LoginPage.vue')
     },
+    {
+      path: '/event-ticket',
+      name: 'EventTicket',
+      component: () => import('@/components/eventticket/EventTicket.vue')
+    }
   ]
 })
 

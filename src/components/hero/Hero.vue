@@ -2,7 +2,6 @@
 import EventTicket from '@/components/eventticket/EventTicket.vue'
 import SearchBar from '@/components/searchbar/SearchBar.vue'
 
-
 </script>
 
 <template>
