@@ -156,6 +156,7 @@ li p:hover{
 @media (max-width: 768px) {
     header {
         padding: 10px 20px;
+        transition: all 0.5s;
     }
 
     .title-nav {
@@ -164,6 +165,7 @@ li p:hover{
 
     .menu-toggle {
         display: block;
+        transition: all 0.5s;
     }
 
     ol {
@@ -174,6 +176,7 @@ li p:hover{
         top: 60px;
         left: 0;
         background-color: #121212;
+        transition: all 0.5s;
     }
 
     ol.show{

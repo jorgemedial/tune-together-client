@@ -63,4 +63,18 @@ function performSearch() {
     border-color: #aaffb3;
     box-shadow: 0 4px 6px rgba(0, 255, 130, 0.25);
 }
+
+@media (max-width: 768px) {
+    .input-container {
+        max-width: 100%;
+    }
+
+    .search-bar input {
+        padding: 10px 16px 10px 35px;
+    }
+
+    .search-icon {
+        left: 10px;
+    }
+}
 </style>

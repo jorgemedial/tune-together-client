@@ -11,4 +11,7 @@ import Hero from '@/components/hero/Hero.vue'
 </template>
 
 <style scoped>
+main{
+    scroll-behavior: smooth;
+}
 </style>

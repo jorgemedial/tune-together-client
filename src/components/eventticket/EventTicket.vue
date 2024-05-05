@@ -2,14 +2,13 @@
 import { defineProps } from 'vue';
 import { Icon } from '@iconify/vue';
 
-// Define props to accept data
 const props = defineProps({
-  imageUrl: String,
-  eventName: String,
-  eventDescription: String,
-  eventDate: String,
-  eventLocation: String,
-  priceLevel: Number
+    imageUrl: { type: String, required: false },
+    eventName: { type: String, required: true },
+    eventDescription: { type: String, default: '' },
+    eventDate: { type: String, required: true },
+    eventLocation: { type: String, required: true },
+    priceLevel: { type: Number, default: 1 }
 });
 
 </script>
@@ -17,17 +16,17 @@ const props = defineProps({
 <template>
   <div class="ticket-container">
     <div class="foto-container">
-        <img :src="imageUrl" alt="Event image" class="event-image"/>
+        <img :src="imageUrl" :alt="`Image of ${eventName}`" class="event-image" loading="lazy"/>
     </div>
 
     <div class="event-details">
-        <h2>{{ eventName }} as</h2>
-        <p>{{ eventDescription }} XD</p>
+        <h2>{{ eventName }} </h2>
+        <p>{{ eventDescription }} </p>
         <div class="event-info">
-            <span><Icon icon="mdi:calendar" /> {{ eventDate }} </span>
-            <span><Icon icon="mdi:map-marker" /> {{ eventDate }} </span>
-            <template v-for="i in priceLevel">
-                <span><Icon icon="mdi:currency-euro" /></span>
+            <span><Icon icon="mdi:calendar" width="25" height="25"/> {{ eventDate }} </span>
+            <span><Icon icon="mdi:map-marker" width="25" height="25"/> {{ eventDate }} </span>
+            <template v-for="(item, index) in priceLevel" :key="index">
+                <span><Icon icon="mdi:currency-euro" width="25" height="25"/></span>
             </template>
         </div>
     </div>
@@ -39,6 +38,7 @@ const props = defineProps({
     width: 720px;
     height: 180px;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     background-color: #101010;
     border-radius: 20px;
@@ -46,7 +46,7 @@ const props = defineProps({
 }
 
 .foto-container {
-    width: 180px;
+    width: 300px;
     height: 100%;
     background-color: #333;
     display: flex;
@@ -57,31 +57,32 @@ const props = defineProps({
 
 .event-details {
     width: 100%;
-    height: 100%;
+    height: 80%;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    gap: 10px;
+    gap: 20px;
     padding-left: 30px;
     color: #ccc;
     align-items: start;
 }
 
-.event-info span {
-    display: inline-flex;
-    align-items: center;
-    margin-right: 10px;
+.event-info {
+    width: 90%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 
-.event-info iconify-icon {
-    margin-right: 5px;
+@media (max-width: 768px) {
+    .foto-container {
+        display: hidden;
+        overflow: hidden;
+    }
+    .event-image{
+        display: hidden;
+        overflow: hidden;
+        
+    }
 }
-
-h2, p {
-    margin: 0;
-}
-
-.icon {
-    color: #ccc;
-}
-
 </style>

@@ -1,14 +1,16 @@
 <script setup>
 import { ref } from 'vue';
-import SearchBar from '@/components/searchbar/SearchBar.vue'
+import { Icon } from '@iconify/vue';
+import axios from 'axios';
 import EventTicket from '@/components/eventticket/EventTicket.vue'
+import SearchBar from '@/components/searchbar/SearchBar.vue'
 </script>
 
 <template>
     <section class="hero">
         <div class="container">
             <article class="title">
-            <h1>Populars events <span class="highlight">in Spain</span></h1>
+            <h1>Populars events around <span class="highlight">The World</span></h1>
             </article>
             <SearchBar placeholder="Name of the event"/>
             <EventTicket />
@@ -18,26 +20,30 @@ import EventTicket from '@/components/eventticket/EventTicket.vue'
 
 <style scoped>
 .hero {
-    padding: 6rem 0rem 0rem 6rem;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 100vh;
     color: white;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    transition: all 0.5s;
 }
 
 .container {
     width: 60%;
     max-width: 1200px;
     display: flex;
+    justify-content: center;
     align-items: flex-start;
     flex-direction: column;
     gap: 2rem;
 }
 
 .title {
-    font-size: 3em;
+    font-size: 4em;
     text-align: left;
-    width: 100%; 
+    width: 100%;
+    transition: all 0.5s;
 }
 
 .highlight {
@@ -50,3 +56,30 @@ import EventTicket from '@/components/eventticket/EventTicket.vue'
     }
 }
 </style>
+
+<script>
+
+export default {
+    data() {
+      return {
+        events: [],
+      };
+    },
+    methods: {
+      getEvents() {
+        const path = 'http://127.0.0.1:5000/social-events';
+        axios.get(path)
+          .then((res) => {
+            console.log(res.data)
+            this.events = res.data;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      },
+    },
+    created() {
+      this.getEvents();
+    },
+  };
+</script>
