@@ -3,31 +3,26 @@ import { defineProps } from 'vue';
 import { Icon } from '@iconify/vue';
 
 const props = defineProps({
-    imageUrl: { type: String, required: false },
-    eventName: { type: String, required: true },
-    eventDescription: { type: String, default: '' },
-    eventDate: { type: String, required: true },
-    eventLocation: { type: String, required: true },
-    priceLevel: { type: Number, default: 1 }
+    eventName: String,
+    eventDate: String,
+    eventLocation: String,
+    priceLevel: Number,
 });
-
 </script>
 
 <template>
   <div class="ticket-container">
     <div class="foto-container">
-        <img :src="imageUrl" :alt="`Image of ${eventName}`" class="event-image" loading="lazy"/>
+        <img src="" :alt="`Image of ${eventName}`" class="event-image" loading="lazy"/>
     </div>
 
     <div class="event-details">
         <h2>{{ eventName }} </h2>
-        <p>{{ eventDescription }} </p>
+        <p>Lorem ipsum dolor sit amet consectetur. Tempore nisi libero praesentium.</p>
         <div class="event-info">
-            <span><Icon icon="mdi:calendar" width="25" height="25"/> {{ eventDate }} </span>
-            <span><Icon icon="mdi:map-marker" width="25" height="25"/> {{ eventDate }} </span>
-            <template v-for="(item, index) in priceLevel" :key="index">
-                <span><Icon icon="mdi:currency-euro" width="25" height="25"/></span>
-            </template>
+            <span class="info-item"><Icon icon="mdi:calendar" width="25" height="25"/> {{ eventDate }} </span>
+            <span class="info-item"><Icon icon="mdi:map-marker" width="25" height="25"/> {{ eventLocation }} </span>
+            <span class="info-item"> {{ priceLevel }} <Icon icon="bi:currency-euro" width="25" height="25"/> </span>
         </div>
     </div>
   </div>
@@ -43,6 +38,7 @@ const props = defineProps({
     background-color: #101010;
     border-radius: 20px;
     overflow: hidden;
+    transition: background-color 0.3s ease;
 }
 
 .foto-container {
@@ -69,20 +65,20 @@ const props = defineProps({
 .event-info {
     width: 90%;
     height: auto;
-    position: relative;
     display: flex;
     justify-content: space-between;
 }
 
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 @media (max-width: 768px) {
     .foto-container {
-        display: hidden;
-        overflow: hidden;
+        display: none;
     }
-    .event-image{
-        display: hidden;
-        overflow: hidden;
-        
-    }
+
 }
 </style>

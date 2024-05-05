@@ -4,7 +4,7 @@ import { Icon } from '@iconify/vue';
 
 
 import Input from '@/commons/labels/Input.vue'
-import LoginButton from '@/commons/Buttons/LoginButton.vue';
+import LoginButton from '@/commons/buttons/LoginButton.vue';
 </script>
 
 <template>
@@ -14,7 +14,7 @@ import LoginButton from '@/commons/Buttons/LoginButton.vue';
             id="first-name"
             type="text"
             label="First Name"
-            placeholder="Ennter your username"
+            placeholder="Enter your username"
             icon="mdi:user"
         />
         <Input

@@ -1,28 +1,56 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import axios from 'axios';
-import EventTicket from '@/components/eventticket/EventTicket.vue'
-import SearchBar from '@/components/searchbar/SearchBar.vue'
+import EventTicket from '@/components/eventticket/EventTicket.vue';
+import SearchBar from '@/components/searchbar/SearchBar.vue';
+
+const events = ref([]);
+
+const getEvents = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:5000/social-events');
+    events.value = response.data.sort((a, b) => a.price - b.price);
+  } catch (error) {
+    console.error("Failed to fetch events:", error);
+  }
+};
+
+onMounted(getEvents);
+window.addEventListener('scroll', () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    loadMoreEvents();
+  }
+});
 </script>
 
 <template>
-    <section class="hero">
-        <div class="container">
-            <article class="title">
-            <h1>Populars events around <span class="highlight">The World</span></h1>
-            </article>
-            <SearchBar placeholder="Name of the event"/>
-            <EventTicket />
-        </div>
-    </section>
+  <section class="hero">
+    <div class="container">
+      <article class="title">
+        <h1>Popular events</h1>
+        <h1><span class="highlight">around Spain</span></h1>
+      </article>
+      <SearchBar placeholder="Name of the event" @update:search="searchQuery = $event"/>
+      <div class="event-list">
+        <EventTicket
+          v-for="(event, index) in events.slice(0, limit)"
+          :key="index"
+          :event-name="event.name"
+          :event-date="event.date"
+          :event-location="event.city"
+          :price-level="event.price"
+        />
+      </div>
+    </div>
+  </section>
 </template>
+
 
 <style scoped>
 .hero {
-    margin-left: 10%;
-    margin-right: 10%;
-    height: 100vh;
+    margin: 70px 0px 0px 30px;
+    min-height: 200vh;
     color: white;
     display: flex;
     justify-content: center;
@@ -50,36 +78,16 @@ import SearchBar from '@/components/searchbar/SearchBar.vue'
     color: #71FF80;
 }
 
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+}
+
 @media (max-width: 768px) {
     .title {
         font-size: 2em;
     }
 }
 </style>
-
-<script>
-
-export default {
-    data() {
-      return {
-        events: [],
-      };
-    },
-    methods: {
-      getEvents() {
-        const path = 'http://127.0.0.1:5000/social-events';
-        axios.get(path)
-          .then((res) => {
-            console.log(res.data)
-            this.events = res.data;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      },
-    },
-    created() {
-      this.getEvents();
-    },
-  };
-</script>

@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import { Icon } from '@iconify/vue';
-import LoginButton from '@/commons/Buttons/LoginButton.vue'
+import LoginButton from '@/commons/buttons/LoginButton.vue'
 
 const isMenuOpen = ref(false);
 
@@ -55,6 +55,7 @@ header{
     position: relative;
     align-items: center;
     background: #121212;
+    
 }
 
 nav{
